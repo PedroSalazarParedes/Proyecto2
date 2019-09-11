@@ -1,22 +1,22 @@
 /* eslint-disable no-undef,no-unused-vars */
 "use strict";
-const createError = require( "http-errors" );
-const express = require( "express" );
-const cors = require( "cors" );
-const path = require( "path" );
-const cookieParser = require( "cookie-parser" );
-const logger = require( "morgan" );
+import createError from "http-errors";
+import express, { json, urlencoded, static } from "express";
+import cors from "cors";
+import { join } from "path";
+import cookieParser from "cookie-parser";
+import logger from "morgan";
 
-const indexRouter = require( "./routes/index" );
-const usersRouter = require( "./routes/users" );
+import indexRouter from "./routes/index";
+import usersRouter from "./routes/users";
 
 const app = express();
 
 app.use( logger( "dev" ) );
-app.use( express.json() );
-app.use( express.urlencoded( { extended: false } ) );
+app.use( json() );
+app.use( urlencoded( { extended: false } ) );
 app.use( cookieParser() );
-app.use( express.static( path.join( __dirname, "front/build" ) ) );
+app.use( static( join( __dirname, "front/build" ) ) );
 app.use( cors( { origin: "http://localhost:3000" } ) );
 
 // Routes
@@ -37,4 +37,4 @@ app.use( ( err, req, res, next ) => {
   res.send( "error" );
 } );
 
-module.exports = app;
+export default app;

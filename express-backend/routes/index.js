@@ -1,11 +1,11 @@
 /* eslint-disable no-undef,no-unused-vars */
 "use strict";
-const express = require( "express" );
-const router = express.Router( {} );
+import { Router } from "express";
+const router = Router( {} );
 
 /* GET home page. */
 router.get( "/", ( req, res, next ) => {
   res.send("App running...");
 } );
 
-module.exports = router;
+export default router;
