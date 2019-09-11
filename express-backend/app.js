@@ -1,4 +1,5 @@
 /* eslint-disable no-undef,no-unused-vars */
+"use strict";
 const createError = require( "http-errors" );
 const express = require( "express" );
 const cors = require( "cors" );
