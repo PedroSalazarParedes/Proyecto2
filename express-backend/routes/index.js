@@ -9,4 +9,4 @@ router.get( "/", ( req, res, next ) => {
   res.send("App running...");
 } );
 
-export default router;
+module.exports = router;
