@@ -1,8 +1,8 @@
 /* eslint-disable no-undef,no-unused-vars */
 "use strict";
-import { MongoClient } from "mongodb";
-import { equal } from "assert";
-import { v1 as neo4j } from "neo4j-driver";
+const MongoClient = require("mongodb").MongoClient;
+const assert = require("assert");
+const neo4j = require("neo4j-driver").v1;
 
 const url = process.env.MOGODB_URI; // Connection URL
 const dbName = "hungryffDB"; // Database Name
@@ -17,20 +17,20 @@ const execQuery = function ( collection_name, query, callback, limit ) {
       .find( query )
       .limit( limit )
       .toArray( ( err, docs ) => {
-        equal( err, null );
+        assert.equal( err, null );
         console.log( `Found ${docs.length} records` );
         callback( docs );
       } );
   };
 
   MongoClient.connect( url, ( err, client ) => {
-    equal( null, err );
+    assert.equal( null, err );
     console.log( "Connected successfully to server" );
     createQuery( client.db( dbName ), collection_name, query, callback, limit );
     client.close();
   } );
 };
 
-export default {
+module.exports = {
   execQuery
 };

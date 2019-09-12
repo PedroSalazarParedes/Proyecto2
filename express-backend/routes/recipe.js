@@ -1,6 +1,5 @@
 "use strict";
-import { Router } from "express";
-import { no4jsQuery } from "../consts";
+const Router = require("express");
 
 const router = Router();
 

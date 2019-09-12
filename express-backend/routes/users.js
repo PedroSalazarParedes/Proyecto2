@@ -1,12 +1,12 @@
 /* eslint-disable no-undef,no-unused-vars */
 "use strict";
-import { Router } from "express";
-const router = Router();
-import { execQuery } from "../consts";
+const express = require("express");
+const router = express.Router();
+const { execQuery } = require( "../consts" );
 
 /* GET users listing. */
 router.get("/",(req, res, next) => {
   execQuery( "users", {}, ( users ) => res.send( users ) );
 });
 
-export default router;
+module.exports = router;
