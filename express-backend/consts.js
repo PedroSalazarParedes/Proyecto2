@@ -6,7 +6,7 @@ const neo4j = require("neo4j-driver").v1;
 
 const url = process.env.MOGODB_URI; // Connection URL
 const dbName = "hungryffDB"; // Database Name
-const driver = neo4j.driver(process.env.GRAPHENEDB_BOLT_URL, neoj4.auth.basic(process.env.GRAPHENEDB_BOLT_USER, process.env.GRAPHENEDB_BOLT_PASSWORD));
+const driver = neo4j.driver(process.env.GRAPHENEDB_BOLT_URL, neo4j.auth.basic(process.env.GRAPHENEDB_BOLT_USER, process.env.GRAPHENEDB_BOLT_PASSWORD));
 
 
 
