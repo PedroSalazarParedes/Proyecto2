@@ -4,3 +4,4 @@
 /front/node_modules/
 /front/yarn.lock
 /front/package-lock.json
+/.env.sh/
