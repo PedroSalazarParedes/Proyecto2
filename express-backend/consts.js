@@ -10,7 +10,7 @@ const dbName = "hungryffDB"; // Database Name
 const driver = neo4j.driver(uri, neo4j.auth.basic(process.env.GRAPHENEDB_BOLT_USER, process.env.GRAPHENEDB_BOLT_PASSWORD))
 
 
-async const execGraphQuery = (query, params) => {
+const execGraphQuery = async (query, params) => {
   return new Promise((resolve, reject) => {
     driver.session()
       .run(query, params)

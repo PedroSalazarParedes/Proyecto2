@@ -1,33 +1,25 @@
 "use strict";
 const Router = require("express");
-
 const router = Router();
+const {execGraphQuery} = require("../consts");
 
+router.use(bodyParser.json()); 
+router.use(bodyParser.urlencoded({ extended: true }));
 
-/*POST ingredient*/
-
-
+/* POST ingredient */
 router.post("/", (req, res) => {
-  // this is a template string
-  const postQuery = `MERGE (ing:Ingredient ${req.body}) RETURN ing.name`; //lets assume that ingredients have names
-
-  //TODO el query de verdad
-
-  query(postQuery).then(data => res.json(data));
-  
-
+  const postQuery = "MERGE (ingredient:Ingredient params) RETURN ingredient.name"; //lets assume that ingredients have names
+  execGraphQuery(postQuery, {params:req.body})  // el body parser manda un json
+  .then(data => res.json(data))
+  .catch(error =>  console.log(error));
 });
 
-
-/* GET ingredients listing. */
+/* GET tool by whatever*/
 router.get("/", (req, res) => {
-
-  const getQuery = `MATCH (:Recipe {name:"${req.params.recipeName}"}) --> (ing:Ingredient) RETURN ing `;
-
-  query(getQuery).then(data => res.json(data));
-
-
-  //TODO el query de verdad execQuery( "users", {}, ( users ) => res.send( users ) );
-});
+  const getByNameQuery = "MATCH (ingredient:Ingredient {body}) RETURN ingredient";
+  execGraphQuery(getByNameQuery, {body: req.params})
+  .then(data => res.json(data))
+  .catch(error => console.log(error));
+})
 
 export default router;
