@@ -1,7 +1,7 @@
 "use strict";
 const Router = require("express");
 const router = Router();
-const {execGraphQuery} = require("../consts");
+const { execGraphQuery } = require("../consts");
 
 
 
@@ -15,7 +15,7 @@ router.post("/", (req, res) => {
   //TODO el query de verdad Necesito saber el formato de la petición para poder crear la receta, los ingredientes ya existen?
 
   query(postQuery).then(data => res.json(data));
-  
+
 });
 
 
@@ -27,7 +27,15 @@ router.post("/", (req, res) => {
 router.get("/all", (req, res) => {
   const getAllQuery = `MATCH (res:Recipe) RETURN res`;
 
-  execGraphQuery(getAllQuery, {}).then(data => res.json(data));
+  execGraphQuery(getAllQuery, {})
+    .then(data => res.send(data.records));
 });
 
-export default router;
+router.get('/:title', (req, res) => {
+  const query = `MATCH p=(res:Recipe {title: {title} }) -[rel]-> (end) RETURN p`;
+  
+  execGraphQuery(query, { title: req.params.title })
+    .then(data => res.send(data.records));
+});
+
+module.exports = router;

@@ -2,23 +2,27 @@
 "use strict";
 const MongoClient = require("mongodb").MongoClient;
 const assert = require("assert");
-const neo4j = require('neo4j-driver').v1;
+const neo4j = require('neo4j-driver').default;
 
+// console.log(neo4j);
 
 const url = process.env.MOGODB_URI; // Connection URL
 const dbName = "hungryffDB"; // Database Name
-const driver = neo4j.driver(process.env.GRAPHENEDB_BOLT_URL, neo4j.auth.basic(process.env.GRAPHENEDB_BOLT_USER, process.env.GRAPHENEDB_BOLT_PASSWORD))
-
+const driver = neo4j.driver(
+  process.env.GRAPHENEDB_BOLT_URL,
+  neo4j.default.auth.basic(process.env.GRAPHENEDB_BOLT_USER, process.env.GRAPHENEDB_BOLT_PASSWORD),
+  { disableLosslessIntegers: true }
+)
 
 const execGraphQuery = async (query, params) => {
   return new Promise((resolve, reject) => {
-    driver.session()
+    const session = driver
+      .session();
+    session
       .run(query, params)
-      .subscribe({
-        onNext: resolve,
-        onCompleted: () => session.close(),
-        onError: reject
-      });
+      .then(resolve)
+      .catch(reject)
+      .finally(() => session.close());
   });
 };
 

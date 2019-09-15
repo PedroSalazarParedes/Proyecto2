@@ -9,6 +9,7 @@ const logger = require( "morgan" );
 
 const indexRouter = require( "./routes/index" );
 const usersRouter = require( "./routes/users" );
+const recipesRouter = require( "./routes/recipe" );
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use( cors( { origin: "http://localhost:3000" } ) );
 // Routes
 app.use( "/api", indexRouter );
 app.use( "/api/users", usersRouter );
+app.use( "/api/recipes", recipesRouter );
 
 // catch 404 and forward to error handler
 app.use( ( req, res, next ) => next( createError( 404 ) ) );
