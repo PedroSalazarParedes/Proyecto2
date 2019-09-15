@@ -32,7 +32,7 @@ router.get("/all", (req, res) => {
 });
 
 router.get('/:title', (req, res) => {
-  const query = `MATCH p=(res:Recipe {title: {title} }) -[rel]-> (end) RETURN p`;
+  const query = `MATCH p=(res:Recipe {title: {title} }) -[rel *]-> (end) RETURN p`;
   
   execGraphQuery(query, { title: req.params.title })
     .then(data => res.send(data.records));
