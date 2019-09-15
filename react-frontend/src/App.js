@@ -1,26 +1,50 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Explorer from './explorer/Explorer';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      actualMenu: -1
+    };
+  }
+
+  goTo = (menu) => {
+    return () => this.setState({ actualMenu: menu });
+  };
+
+  render() {
+
+    let toRender = undefined;
+    switch (this.state.actualMenu) {
+      case 0:
+        toRender = undefined;
+        break;
+      case 1:
+        toRender = <Explorer />;
+        break;
+      case 2:
+        toRender = undefined;
+        break;
+      default:
+        toRender = (
+          <div>
+            Haga click en el menu
+          </div>
+        );
+    }
+
+    return (
+      <div>
+        <div>
+          <button onClick={this.goTo(0)}>Login</button>
+          <button onClick={this.goTo(1)}>Explorer</button>
+          <button onClick={this.goTo(2)}>Create</button>
+        </div>
+        <div>{toRender}</div>
+      </div>
+    );
+  }
 }
-
-export default App;
