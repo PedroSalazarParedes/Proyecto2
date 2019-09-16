@@ -22,3 +22,6 @@ export default class Login extends React.Component {
 Login.propTypes = {
 
 }
+
+//En este momento no están redireccionando los botones de login y signup a ninguna función, deberían manejar estos eventos para lograr el objetivo de estos. 
+//También podrían manejarlo con un form al hacer el submit
