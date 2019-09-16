@@ -1,0 +1,19 @@
+{
+  "name": "hangryff",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./express-backend/bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "mongodb": "^3.1.6",
+    "morgan": "~1.9.0",
+    "neo4j-driver": "^1.7.6",
+    "request": "^2.88.0"
+  }
+}
