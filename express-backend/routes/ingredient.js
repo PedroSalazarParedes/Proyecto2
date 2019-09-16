@@ -3,8 +3,8 @@ const Router = require("express");
 const router = Router();
 const {execGraphQuery} = require("../consts");
 
-router.use(bodyParser.json()); 
-router.use(bodyParser.urlencoded({ extended: true }));
+// router.use(bodyParser.json()); 
+// router.use(bodyParser.urlencoded({ extended: true }));
 
 /* POST ingredient */
 router.post("/", (req, res) => {
@@ -15,11 +15,11 @@ router.post("/", (req, res) => {
 });
 
 /* GET tool by whatever*/
-router.get("/", (req, res) => {
-  const getByNameQuery = "MATCH (ingredient:Ingredient {body}) RETURN ingredient";
-  execGraphQuery(getByNameQuery, {body: req.params})
+router.get("/all", (req, res) => {
+  const getByNameQuery = "MATCH (ingredient:Ingredient) RETURN ingredient";
+  execGraphQuery(getByNameQuery, {})
   .then(data => res.json(data))
   .catch(error => console.log(error));
 })
 
-export default router;
+module.exports = router;
