@@ -23,7 +23,15 @@
   border: 2px solid var(--c4);
 }
 
-#login-container > div > div {
+#login-container > div > div#logo {
+  background-image: url('../full logo.png');
+  height: 20vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#login-container > div > div:not(#logo) {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;

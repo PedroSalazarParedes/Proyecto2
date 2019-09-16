@@ -11,7 +11,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      actualMenu: 4,
+      actualMenu: 1,
       actualRecipe: undefined
     };
     this.goToRecipe = this.goToRecipe.bind(this);
@@ -58,6 +58,7 @@ export default class App extends React.Component {
     return (
       <div>
         <div id="header">
+          <div id="icon"></div>
           <div>
             <button onClick={this.goTo(0)} className={this.state.actualMenu === 0 ? 'active' : ''}>Login</button>
             <button onClick={this.goTo(1)} className={this.state.actualMenu === 1 || this.state.actualMenu === 3 ? 'active' : ''}>Explorer</button>

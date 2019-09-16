@@ -7,6 +7,17 @@
   display: grid;
 }
 
+#header > div#icon {
+  background: url('./sombrero.png');
+  height: 80%;
+  width: 100px;
+  background-size: contain;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center;
+  top: 10px;
+}
+
 #header > div {
   margin: auto;
 }
@@ -29,6 +40,6 @@
   padding-top: 80px;
 }
 
-#header + div{
+#header + div {
   height: calc(100% - 80px);
 }

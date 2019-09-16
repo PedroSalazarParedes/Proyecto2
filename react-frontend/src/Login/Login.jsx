@@ -7,6 +7,7 @@ export default class Login extends React.Component {
     return (
       <div id="login-container">
         <div>
+          <div id="logo"></div>
           <input type="text" placeholder="username" />
           <input type="password" placeholder="password" />
           <div>
