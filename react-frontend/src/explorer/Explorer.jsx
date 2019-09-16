@@ -11,7 +11,7 @@ export default class Explorer extends React.Component {
   }
 
   componentDidMount() {
-    const api = 'http://localhost:3001/api/recipes/all';
+    const api = 'https://hangryff.herokuapp.com/api/recipes/all';
     (async () => {
       const req = await fetch(api);
       const data = await req.json();

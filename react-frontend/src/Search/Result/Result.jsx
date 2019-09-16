@@ -30,7 +30,7 @@ export default class Result extends React.Component {
   }
 
   search() {
-    const api = 'http://localhost:3001/api/recipes/search';
+    const api = 'https://hangryff.herokuapp.com/api/recipes/search';
     (async () => {
       const req = await fetch(api, {
         method: 'POST',

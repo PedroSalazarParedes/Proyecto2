@@ -14,7 +14,7 @@ export default class Recipe extends React.Component {
   componentDidMount() {
     const title = '_fields' in this.props.recipe ? this.props.recipe._fields[0].properties.title : this.props.recipe.title;
     (async () => {
-      const req = await fetch(`http://localhost:3001/api/recipes/${encodeURIComponent(title)}`);
+      const req = await fetch(`https://hangryff.herokuapp.com/api/recipes/${encodeURIComponent(title)}`);
       const data = await req.json();
       this.parseRecipe(data);
     })();

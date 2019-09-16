@@ -18,7 +18,7 @@ export default class Search extends React.Component {
   }
 
   componentDidMount() {
-    const api = 'http://localhost:3001/api/ingredients/all';
+    const api = 'https://hangryff.herokuapp.com/api/ingredients/all';
     (async () => {
       const req = await fetch(api);
       const data = await req.json();
