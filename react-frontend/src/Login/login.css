@@ -1,0 +1,47 @@
+#login-container {
+  height: 100%;
+  display: grid;
+}
+
+#login-container > div {
+  margin: auto;
+  width: 30vw;
+}
+
+#login-container > div > input {
+  border: 2px solid transparent;
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+  outline: none;
+  width: calc(100% - 25px);
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+}
+
+#login-container > div > input:focus {
+  border: 2px solid var(--c4);
+}
+
+#login-container > div > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+#login-container > div > div > button {
+  background-color: var(--c4);
+  color: var(--c2);
+  outline: none;
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  font-weight: bold;
+}
+
+#login-container > div > div > button:hover {
+  background-color: var(--c2);
+  color: var(--c4);
+  border: 1px solid var(--c4);
+}

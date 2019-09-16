@@ -12,9 +12,9 @@ export default class Recipe extends React.Component {
   }
 
   componentDidMount() {
-    const title = this.props.recipe._fields[0].properties.title;
+    const title = '_fields' in this.props.recipe ? this.props.recipe._fields[0].properties.title : this.props.recipe.title;
     (async () => {
-      const req = await fetch(`http://localhost:3001/api/recipes/${title}`);
+      const req = await fetch(`http://localhost:3001/api/recipes/${encodeURIComponent(title)}`);
       const data = await req.json();
       this.parseRecipe(data);
     })();
@@ -67,7 +67,6 @@ export default class Recipe extends React.Component {
       .filter(r => r.type === 'StepLink')
       .forEach(s => recipe.steps[s.properties.step] = nodes[s.end].properties);
 
-    console.log(recipe);
     this.setState({ recipe });
   }
 
@@ -83,7 +82,7 @@ export default class Recipe extends React.Component {
           <div>
             <div>
               <h1>{this.state.recipe.title}</h1>
-              <img src={this.state.recipe.image} />
+              <img src={this.state.recipe.image} alt={this.state.recipe.image} />
             </div>
             <div>
               <div>
@@ -122,7 +121,7 @@ export default class Recipe extends React.Component {
                             <div key={`ing_${index}`} className="ingredient">
                               <span>{i.name}</span>
                               <span>{(i.meta.meta && i.meta.meta.join(', ')) || '-'}</span>
-                              <img src={`https://spoonacular.com/cdn/ingredients_100x100/${i.image}`} />
+                              <img src={`https://spoonacular.com/cdn/ingredients_100x100/${i.image}`} alt={i.image} />
                               <span>Quantity</span>
                               <span>{`${i.meta.amount} ${i.meta.measures_metric_unitLong}`}</span>
                             </div>
@@ -137,7 +136,7 @@ export default class Recipe extends React.Component {
                           {s.equipment.map((e, index) => (
                             <div key={`equ_${index}`} className="equipment">
                               <span>{e.name}</span>
-                              <img src={`https://spoonacular.com/cdn/equipment_100x100/${e.image}`} />
+                              <img src={`https://spoonacular.com/cdn/equipment_100x100/${e.image}`} alt={e.image} />
                             </div>
                           ))}
                         </div>

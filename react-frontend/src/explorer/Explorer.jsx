@@ -24,15 +24,13 @@ export default class Explorer extends React.Component {
   }
 
   render() {
-    console.log(this.state.recipes[0] && this.state.recipes[0]._fields[0].properties);
-
     return (
       <div id="recipes-explorer-container">
         {this.state.recipes.map((r, i) => {
           return (
             <div key={i} onClick={this.clickRecipe(r)}>
               <span>{r._fields[0].properties.title}</span>
-              <img src={r._fields[0].properties.image} />
+              <img src={r._fields[0].properties.image} alt={r._fields[0].properties.image}/>
               <div className="recipe-item-footer">
                 <div>
                   <i className="fas fa-utensils"></i>

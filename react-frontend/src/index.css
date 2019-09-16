@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Manjari&display=swap');
 
+html,
+body,
+#root,
+#root > div {
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
@@ -17,7 +24,7 @@ code {
   --c1: #ffffff;
   --c2: #212121;
   --c3: #c5c5c5;
-  --c4: #F2AB27;
+  --c4: #f2ab27;
 }
 
 * {

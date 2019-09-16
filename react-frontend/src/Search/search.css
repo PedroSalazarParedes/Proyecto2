@@ -1,0 +1,137 @@
+#search-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+}
+
+#search-container > div {
+  height: calc(100% - 20px);
+  padding: 10px;
+  position: relative;
+}
+
+#search-container > div > div {
+  margin: auto;
+  text-align: center;
+}
+
+#search-container > div:nth-child(1) > div:nth-child(2) {
+  overflow-y: auto;
+  max-height: calc(70vh + 40px);
+  margin-bottom: -20px;
+}
+
+#search-container > div > div > button {
+  background-color: transparent;
+  padding: 10px;
+  border: 1px solid var(--c4);
+  margin: 10px;
+  cursor: pointer;
+  color: var(--c4);
+  outline: none;
+}
+
+#search-container > div > div > button.active,
+#search-container > div > div > button:hover {
+  background-color: var(--c4);
+  color: var(--c1);
+}
+
+#search-container > div > #name-search-container {
+  height: calc(100% - 80px);
+  display: grid;
+}
+
+#search-container > div > #name-search-container > div {
+  margin: auto;
+}
+
+#search-container > div > #name-search-container > div > input {
+  margin: auto;
+  padding: 30px 30px 20px;
+  font-size: 2em;
+  width: 60%;
+  text-align: center;
+  display: block;
+  outline: none;
+  border: 2px solid transparent;
+}
+
+#search-container > div > #name-search-container > div > input:focus {
+  border: 2px solid var(--c4);
+}
+
+#search-container > div > #name-search-container > div > button {
+  background-color: transparent;
+  padding: 10px;
+  border: 1px solid var(--c4);
+  margin: 10px;
+  cursor: pointer;
+  color: var(--c4);
+  width: calc(60% + 60px + 4px);
+  outline: none;
+}
+
+#search-container > div > #name-search-container > div > button:hover {
+  background-color: var(--c4);
+  color: var(--c1);
+}
+
+#ingredients-search-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+#ingredients-search-container > span {
+  color: var(--c1);
+  display: block;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+}
+
+#ingredients-search-container > .ingredient-item {
+  background-color: var(--c1);
+  box-shadow: 0 1px 10px -5px black;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 5px;
+  min-height: 80px;
+}
+
+#ingredients-search-container > .ingredient-item.active {
+  background-color: var(--c4);
+  display: grid;
+}
+
+#ingredients-search-container > .ingredient-item:hover {
+  border: 2px solid var(--c4);
+}
+
+#ingredients-search-container > .ingredient-item > * {
+  display: block;
+  text-align: center;
+}
+
+#ingredients-search-container > .ingredient-item > img {
+  max-height: 50px;
+  margin: auto;
+}
+
+#ingredients-search-container > .ingredient-item > span {
+  text-transform: capitalize;
+}
+
+#ingredients-search-container > .ingredient-item.active > img {
+  display: none;
+}
+
+#ingredients-search-container > .ingredient-item.active > span {
+  margin: auto;
+  display: flex;
+}

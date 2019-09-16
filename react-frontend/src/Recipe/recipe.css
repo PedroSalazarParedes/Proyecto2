@@ -10,6 +10,7 @@
 #recipe-container > div:nth-child(1) > div {
   margin: auto;
   color: var(--c1);
+  text-align: center;
 }
 
 #recipe-container > div:nth-child(1) > div > div > a,

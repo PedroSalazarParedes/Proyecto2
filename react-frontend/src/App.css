@@ -26,5 +26,9 @@
 }
 
 #header + * {
-  padding-top: 50px;
+  padding-top: 80px;
+}
+
+#header + div{
+  height: calc(100% - 80px);
 }
