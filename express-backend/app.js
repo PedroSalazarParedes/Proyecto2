@@ -18,7 +18,7 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "front")));
+app.use(express.static(path.join(__dirname, "front")));//No usan la carpeta front, deberían eliminarla
 app.use(cors({ origin: ["http://localhost:3000", "https://hangryff.herokuapp.com"] }));
 
 // Routes
